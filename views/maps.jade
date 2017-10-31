@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  script(type='text/javascript', href='/public/javascripts/maps.js')
+    
+    
+    div
+        label(for='raddressInput') Search location
+        input#addressInput(type='text', size='15')
+        label(for='radiusSelect') Radius
+        select#radiusSelect(label='Radius')
+            option(value='50', selected='') 50 kms
+            option(value='30') 30 kms
+            option(value='20') 20 kms
+            option(value='10') 10 kms
+        input#searchButton(type='button', value='Search')
+    div
+        select#locationSelect(style='width: 10%; visibility: hidden')
+    #map(style='width: 100%; height: 90%')
+
+    script.
+        alert("Alert")
+        initMap()
+        
+    script(src="https://maps.googleapis.com/maps/api/js?key="+ process.env.MAPS_API + "&callback=initMap")
+        
