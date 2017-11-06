@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  script(type='text/javascript', href='/public/javascripts/maps.js')
+    script(type='text/javascript', src='/javascripts/maps.js')
     
     
     div
@@ -19,8 +19,6 @@ block content
     #map(style='width: 100%; height: 90%')
 
     script.
-        alert("Alert")
-        initMap()
-        
-    script(src="https://maps.googleapis.com/maps/api/js?key="+ process.env.MAPS_API + "&callback=initMap")
+        initMap
+    script(async, defer, src="https://maps.googleapis.com/maps/api/js?key="+ process.env.MAPS_API + "&callback=initMap")
         
