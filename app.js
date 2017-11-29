@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'Cookie Monster',
   resave: true,
+  saveUninitialized: false,
   cookie: {maxage: 60000}
 }));
 
