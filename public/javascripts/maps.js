@@ -6,9 +6,9 @@ var locationSelect;
 
 
 function initMap() {
-    var sydney = {lat: 36.652665, lng:  -121.797689};
+    var monterey = {lat: 36.652665, lng:  -121.797689};
     map = new google.maps.Map(document.getElementById('map'), {
-        center: sydney,
+        center: monterey,
         zoom: 11,
         mapTypeId: 'roadmap',
         mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
@@ -24,6 +24,8 @@ function initMap() {
           google.maps.event.trigger(markers[markerNum], 'click');
         }
     };
+    
+    createMarker(monterey, "Monterey", "400 8th st");
 }
 
 function searchLocations() {
@@ -59,7 +61,8 @@ function searchLocationsNear(center) {
  var searchUrl = 'storelocator.php?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius;
  downloadUrl(searchUrl, function(data) {
    var xml = parseXml(data);
-   var markerNodes = xml.documentElement.getElementsByTagName("marker");
+   //var markerNodes = xml.documentElement.getElementsByTagName("marker");
+   var markerNodes = document.getElementsByTagName("marker");
    var bounds = new google.maps.LatLngBounds();
    for (var i = 0; i < markerNodes.length; i++) {
      var id = markerNodes[i].getAttribute("id");
