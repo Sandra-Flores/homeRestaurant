@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
     } else {
         req.session.views = 1;
     }
-    res.render('maps', {views: req.session.views});
+    res.render('login', {title: "Login", views: req.session.views});
 });
 
 module.exports = router;

@@ -1,8 +1,25 @@
+
 body {
-  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+#mapsearch {
+  padding: 10px 10px 0px 10px;
+}
+
+#map {
+  padding: 10px;
+  margin: 10px;
+  flex: 1 0 auto;
+  
+  
+  
 }
