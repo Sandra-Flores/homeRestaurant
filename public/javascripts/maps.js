@@ -130,4 +130,3 @@ function parseXml(str) {
 }
 
 function doNothing() {}
-       

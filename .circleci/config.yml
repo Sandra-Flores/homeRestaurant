@@ -1,4 +1,10 @@
 version: 2
+deployment:
+    staging:
+        branch: master
+        heroku:
+            appname: home-restaurant
+
 jobs:
    build:
      #working_directory: ~/home_restaurant
@@ -7,10 +13,3 @@ jobs:
      steps:
        - checkout
        - run: echo "hello world"
-       
-
-deployment:
-    staging:
-        branch: master
-        heroku:
-            appname: home-restaurant
