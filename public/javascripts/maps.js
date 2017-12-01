@@ -24,6 +24,7 @@ function initMap() {
           google.maps.event.trigger(markers[markerNum], 'click');
         }
     };
+}
 
 function searchLocations() {
  var address = document.getElementById("addressInput").value;
