@@ -8,7 +8,7 @@ function ensureAuthenticated(req, res, next){
 }
 
 
-router.get('/', ensureAuthenticated, function(req, res, next) {
+router.get('/', function(req, res, next) {
     if(req.session.views) {
         req.session.views++;
     } else {
