@@ -24,9 +24,6 @@ function initMap() {
           google.maps.event.trigger(markers[markerNum], 'click');
         }
     };
-    
-    createMarker(monterey, "Monterey", "400 8th st");
-}
 
 function searchLocations() {
  var address = document.getElementById("addressInput").value;

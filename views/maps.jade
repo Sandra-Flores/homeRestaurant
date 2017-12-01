@@ -1,10 +1,10 @@
 extends layout
 
 block content
-    script(type='text/javascript', src='/javascripts/maps.js')
+  script(type='text/javascript', href='/public/javascripts/maps.js')
     
-    p#views Number of views: #{views}
-    #mapsearch
+    
+    div
         label(for='raddressInput') Search location
         input#addressInput(type='text', size='15')
         label(for='radiusSelect') Radius
