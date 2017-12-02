@@ -30,10 +30,10 @@ function initMap() {
 function getGeolocation(){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(function(position){
-            var latlng = {
+            var latlng = new google.maps.LatLng({
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
-            }
+            });
             searchLocationsNear(latlng);
         }, function(error){
 
