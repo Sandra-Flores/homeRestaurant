@@ -17,17 +17,18 @@ router.get('/storelocator', function(req, res, next){
            next(new Error("Error finding stores"));
        } else {
            
-           var response = xml.create("markers");
+           var markers = xml.create('markers');
            for(var i = 0; i < results.length; i++){
-               console.log("Result: " + results[i].name);
-               var marker = response.ele('marker');
-                    marker.att('name', results[i].name);
-                    marker.att('address', results[i].address);
-                    marker.att('lat', results[i].lat);
-                    marker.att('lng', results[i].lng);
-                    marker.att('distance', results[i].distance);
+                var marker = markers.ele('marker');
+                marker.att('store_id', results[i].store_id);
+                marker.att('name', results[i].name);
+                marker.att('address', results[i].address);
+                marker.att('lat', results[i].lat);
+                marker.att('lng', results[i].lng);
+                marker.att('distance', results[i].distance);
            }
-           console.log(response);
+           console.log(markers.end({pretty: true}));
+           res.send(markers.end({pretty: true}))
        }
     });
     

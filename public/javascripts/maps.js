@@ -24,6 +24,23 @@ function initMap() {
           google.maps.event.trigger(markers[markerNum], 'click');
         }
     };
+    getGeolocation();
+}
+
+function getGeolocation(){
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(function(position){
+            var latlng = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            }
+            searchLocationsNear(latlng);
+        }, function(error){
+
+        });
+    } else {
+        
+    }
 }
 
 function searchLocations() {
@@ -54,7 +71,6 @@ function clearLocations() {
 
 function searchLocationsNear(center) {
  clearLocations();
- console.log("Search");
  var radius = document.getElementById('radiusSelect').value;
  var searchUrl = 'xml/storelocator?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius;
  downloadUrl(searchUrl, function(data) {
@@ -64,10 +80,13 @@ function searchLocationsNear(center) {
    //var markerNodes = xml.documentElement.getElementsByTagName("marker");
    var markerNodes = xml.documentElement.getElementsByTagName("marker");
    var bounds = new google.maps.LatLngBounds();
+   var mapZoom = new google.maps.Circle({
+       center: {lat: center.lat(), lng: center.lng()},
+       radius: parseFloat(radius)*1000
+   });
    for (var i = 0; i < markerNodes.length; i++) {
      var id = markerNodes[i].getAttribute("store_id");
      var name = markerNodes[i].getAttribute("name");
-     console.log(name);
      var address = markerNodes[i].getAttribute("address");
      var distance = parseFloat(markerNodes[i].getAttribute("distance"));
      var latlng = new google.maps.LatLng(
@@ -78,8 +97,7 @@ function searchLocationsNear(center) {
      createMarker(latlng, name, address);
      bounds.extend(latlng);
    }
-   console.log(xml);
-   map.fitBounds(bounds);
+   map.fitBounds(mapZoom.getBounds());
    locationSelect.style.visibility = "visible";
    locationSelect.onchange = function() {
      var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
@@ -109,7 +127,6 @@ function createOption(name, distance, num) {
 }
 
 function downloadUrl(url, callback) {
-    console.log("download");
   var request = window.ActiveXObject ?
       new ActiveXObject('Microsoft.XMLHTTP') :
       new XMLHttpRequest;
@@ -117,7 +134,6 @@ function downloadUrl(url, callback) {
   request.onreadystatechange = function() {
     if (request.readyState == 4) {
       request.onreadystatechange = doNothing;
-      console.log(request.responseText);
       callback(request.responseText, request.status);
     }
   };
@@ -127,7 +143,6 @@ function downloadUrl(url, callback) {
 }
 
 function parseXml(str) {
-    console.log(str);
   if (window.ActiveXObject) {
     var doc = new ActiveXObject('Microsoft.XMLDOM');
     doc.loadXML(str);
