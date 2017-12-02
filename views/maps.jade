@@ -3,8 +3,8 @@ extends layout
 block content
     script(type='text/javascript', src='/javascripts/maps.js')
     
-    p#views Number of views: #{views}
-    #mapsearch
+    
+    div#mapsearch
         label(for='raddressInput') Search location
         input#addressInput(type='text', size='15')
         label(for='radiusSelect') Radius
@@ -18,7 +18,6 @@ block content
         select#locationSelect(style='width: 10%; visibility: hidden')
     #map
 
-    script.
-        initMap
+    
     script(async, defer, src="https://maps.googleapis.com/maps/api/js?key="+ process.env.MAPS_API + "&callback=initMap")
         
