@@ -18,6 +18,7 @@
     "mysql": "^2.15.0",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "xml": "^1.0.1"
   }
 }

@@ -12,7 +12,8 @@ var db = require('./helpers/database.js');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
-var auth = require('./routes/auth')
+var auth = require('./routes/auth');
+var xml = require('./routes/xml');
 
 var app = express();
 
@@ -42,6 +43,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/login', login);
 app.use('/auth', auth);
+app.use('/xml', xml);
 
 db.connect(db.MODE_TEST, function(err){
   if(err){

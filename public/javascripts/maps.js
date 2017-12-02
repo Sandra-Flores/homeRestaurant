@@ -56,7 +56,7 @@ function searchLocationsNear(center) {
  clearLocations();
  console.log("Search");
  var radius = document.getElementById('radiusSelect').value;
- var searchUrl = 'storelocator.php?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius;
+ var searchUrl = 'xml/storelocator?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius;
  downloadUrl(searchUrl, function(data) {
     
    var xml = parseXml(data);

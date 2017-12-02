@@ -10,7 +10,7 @@ exports.MODE_PRODUCTION = 'mode_production';
 var state = {
     pool: null,
     mode: null
-}
+};
 
 
 exports.connect = function(mode, done){
@@ -28,4 +28,4 @@ exports.connect = function(mode, done){
 
 exports.get = function() {
         return state.pool;
-}
+};
