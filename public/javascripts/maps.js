@@ -54,17 +54,20 @@ function clearLocations() {
 
 function searchLocationsNear(center) {
  clearLocations();
-
+ console.log("Search");
  var radius = document.getElementById('radiusSelect').value;
  var searchUrl = 'storelocator.php?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius;
  downloadUrl(searchUrl, function(data) {
+    
    var xml = parseXml(data);
+   
    //var markerNodes = xml.documentElement.getElementsByTagName("marker");
-   var markerNodes = document.getElementsByTagName("marker");
+   var markerNodes = xml.documentElement.getElementsByTagName("marker");
    var bounds = new google.maps.LatLngBounds();
    for (var i = 0; i < markerNodes.length; i++) {
-     var id = markerNodes[i].getAttribute("id");
+     var id = markerNodes[i].getAttribute("store_id");
      var name = markerNodes[i].getAttribute("name");
+     console.log(name);
      var address = markerNodes[i].getAttribute("address");
      var distance = parseFloat(markerNodes[i].getAttribute("distance"));
      var latlng = new google.maps.LatLng(
@@ -75,6 +78,7 @@ function searchLocationsNear(center) {
      createMarker(latlng, name, address);
      bounds.extend(latlng);
    }
+   console.log(xml);
    map.fitBounds(bounds);
    locationSelect.style.visibility = "visible";
    locationSelect.onchange = function() {
@@ -105,6 +109,7 @@ function createOption(name, distance, num) {
 }
 
 function downloadUrl(url, callback) {
+    console.log("download");
   var request = window.ActiveXObject ?
       new ActiveXObject('Microsoft.XMLHTTP') :
       new XMLHttpRequest;
@@ -112,6 +117,7 @@ function downloadUrl(url, callback) {
   request.onreadystatechange = function() {
     if (request.readyState == 4) {
       request.onreadystatechange = doNothing;
+      console.log(request.responseText);
       callback(request.responseText, request.status);
     }
   };
@@ -121,6 +127,7 @@ function downloadUrl(url, callback) {
 }
 
 function parseXml(str) {
+    console.log(str);
   if (window.ActiveXObject) {
     var doc = new ActiveXObject('Microsoft.XMLDOM');
     doc.loadXML(str);

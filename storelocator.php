@@ -19,7 +19,7 @@ if (!$db_selected) {
   die ("Can\'t use db : " . mysql_error());
 }
 // Search the rows in the markers table
-$query = sprintf("SELECT id, name, address, lat, lng, ( 3959 * acos( cos( radians('%s') ) * cos( radians( lat ) ) * cos( radians( lng ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( lat ) ) ) ) AS distance FROM store HAVING distance < '%s' ORDER BY distance LIMIT 0 , 20",
+$query = sprintf("SELECT store_id, name, address, lat, lng, ( 3959 * acos( cos( radians('%s') ) * cos( radians( lat ) ) * cos( radians( lng ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( lat ) ) ) ) AS distance FROM store HAVING distance < '%s' ORDER BY distance LIMIT 0 , 20",
   mysql_real_escape_string($center_lat),
   mysql_real_escape_string($center_lng),
   mysql_real_escape_string($center_lat),
@@ -34,7 +34,7 @@ header("Content-type: text/xml");
 while ($row = @mysql_fetch_assoc($result)){
   $node = $dom->createElement("marker");
   $newnode = $parnode->appendChild($node);
-  $newnode->setAttribute("id", $row['id']);
+  $newnode->setAttribute("store_id", $row['store_id']);
   $newnode->setAttribute("name", $row['name']);
   $newnode->setAttribute("address", $row['address']);
   $newnode->setAttribute("lat", $row['lat']);

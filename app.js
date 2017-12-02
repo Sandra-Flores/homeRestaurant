@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
+var db = require('./helpers/database.js');
 
 
 var index = require('./routes/index');
@@ -41,6 +42,18 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/login', login);
 app.use('/auth', auth);
+
+db.connect(db.MODE_TEST, function(err){
+  if(err){
+    console.log("Failed to connect to database")
+    process.exit(1);
+  } else {
+    console.log("Connected to database");  
+  }
+  
+  
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

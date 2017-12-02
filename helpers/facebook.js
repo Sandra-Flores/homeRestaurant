@@ -12,7 +12,7 @@ passport.deserializeUser(function(user, done) {
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_SECRET,
-    callbackURL: "https://home-restaurant.herokuapp.com/auth/facebook/callback"
+    callbackURL: "https//home-restaurant.herokuapp.com/auth/facebook/callback"
 },
 function(accessToken, refreshToken, profile, done){
     return done(null, profile);

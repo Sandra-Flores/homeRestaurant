@@ -1,7 +1,7 @@
 <head>
 <meta charset="UTF-8">
 <title>header</title>  
-<link type="text/css" rel="stylesheet" href="css/styles2.css">
+<link type="text/css" rel="stylesheet" href="css/styles2.css"/>
 </head>
 
 <body>
