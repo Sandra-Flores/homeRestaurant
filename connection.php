@@ -9,11 +9,12 @@ function getDatabaseConnection()
     $db = "HomeRestaurant";                       //Your database name you want to connect to
     $port = 3306;                                //The port #. It is always 3306
     
-    //$connection = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
-    $dbConn = new PDO("mysql:host=$host;dbname=$db;port=$port", $user, $pass);
-    $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $connection = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
+    //$dbConn = new PDO("mysql:host=$host;dbname=$db;port=$port", $user, $pass);
+    //$dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    return $dbConn;
+    //return $dbConn;
+    return $connection;
 }
 
 function getDataBySQL($sql)
