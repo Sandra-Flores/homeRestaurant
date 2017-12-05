@@ -11,11 +11,21 @@ function initMap() {
         center: monterey,
         zoom: 11,
         mapTypeId: 'roadmap',
-        mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
+        zoomControl: true,
+        mapTypeControl: false,
+        streetViewControl: false,
     });
     infoWindow = new google.maps.InfoWindow();
-
-    searchButton = document.getElementById("searchButton").onclick = searchLocations;
+    updateRange();
+    var searchControl = createSearchControl();
+    searchControl.onkeypress = function(e){
+        if(e.keyCode === 13){
+            searchLocations();
+        }
+    };
+    
+    searchControl.index =  1;
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(searchControl);
     
     locationSelect = document.getElementById("locationSelect");
     locationSelect.onchange = function() {
@@ -43,8 +53,9 @@ function getGeolocation(){
     }
 }
 
+
 function searchLocations() {
- var address = document.getElementById("addressInput").value;
+ var address = document.getElementById("searchInput").value;
  var geocoder = new google.maps.Geocoder();
  geocoder.geocode({address: address}, function(results, status) {
    if (status == google.maps.GeocoderStatus.OK) {
@@ -71,7 +82,7 @@ function clearLocations() {
 
 function searchLocationsNear(center) {
  clearLocations();
- var radius = document.getElementById('radiusSelect').value;
+ var radius = document.getElementById('rangeSlider').value;
  var searchUrl = 'xml/storelocator?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius;
  downloadUrl(searchUrl, function(data) {
     
@@ -151,5 +162,24 @@ function parseXml(str) {
     return (new DOMParser).parseFromString(str, 'text/xml');
   }
 }
+
+function createSearchControl(){
+    var searchBox = document.createElement('input');
+    searchBox.type = 'text';
+    searchBox.id = 'searchInput';
+    searchBox.className = 'search-input';
+    searchBox.placeholder = 'Enter location..';
+    searchBox.style.marginTop = '10px';
+    searchBox.style.marginLeft = '10px';
+    return searchBox;
+}
+
+function updateRange(){
+    var rangeLabel = document.getElementById("rangeValue");
+    var rangeSlider = document.getElementById("rangeSlider");
+    
+    rangeLabel.innerHTML = rangeSlider.value;
+}
+
 
 function doNothing() {}

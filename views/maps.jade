@@ -4,16 +4,11 @@ block content
     script(type='text/javascript', src='/javascripts/maps.js')
     
     
-    div#mapsearch
-        label(for='raddressInput') Search location
-        input#addressInput(type='text', size='15')
-        label(for='radiusSelect') Radius
-        select#radiusSelect(label='Radius')
-            option(value='50', selected='') 50 kms
-            option(value='30') 30 kms
-            option(value='20') 20 kms
-            option(value='10') 10 kms
-        input#searchButton(type='button', value='Search')
+    #slideContainer
+        p 
+            span#rangeValue
+            |  KM
+        input#rangeSlider.slider(type='range' min='1' max='30' value='15' oninput='updateRange()')
     div
         select#locationSelect(style='width: 10%; visibility: hidden')
     #map
