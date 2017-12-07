@@ -12,7 +12,7 @@ block content
     div
         select#locationSelect(style='width: 10%; visibility: hidden')
         #map
-        
-        #side_bar
+        div#sidediv
+            #side_bar
     script(async, defer, src="https://maps.googleapis.com/maps/api/js?key="+ process.env.MAPS_API + "&callback=initMap")
         

@@ -6,6 +6,18 @@ accordion{
   display:flex;
   flex: 1 0 auto;
 }
+#noloc{
+  text-align: center;
+   font: Impact, sans-serif;
+ 
+  
+}
+#sidediv{
+  height:200px;
+  width: 100%;
+  
+  border: 1px solid black ;
+}
 body {
   display: flex;
   flex-direction: column;
