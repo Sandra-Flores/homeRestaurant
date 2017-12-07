@@ -10,7 +10,7 @@ var db = require('./helpers/database.js');
 
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var signup = require('./routes/signup');
 var login = require('./routes/login');
 var auth = require('./routes/auth');
 var xml = require('./routes/xml');
@@ -41,7 +41,7 @@ app.use(passport.session());
 
 // routes
 app.use('/', index);
-app.use('/users', users);
+app.use('/signup', signup);
 app.use('/login', login);
 app.use('/auth', auth);
 app.use('/xml', xml);
