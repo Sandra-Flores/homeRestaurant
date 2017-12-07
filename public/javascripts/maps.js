@@ -110,7 +110,7 @@ function searchLocationsNear(center) {
      var latlng = new google.maps.LatLng(
           parseFloat(markerNodes[i].getAttribute("lat")),
           parseFloat(markerNodes[i].getAttribute("lng")));
-     var description = parseFloat(markerNodes[i].getAttribute("description"));
+     var description = markerNodes[i].getAttribute("description");
 
      createOption(name, distance, i);
      createMarker(latlng, name, address, description);
