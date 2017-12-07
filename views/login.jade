@@ -1,6 +1,37 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  a(href='/auth/facebook') Login w/facebook
+
+  div.login
+    h1 Welcome to HomeRestaurant
+    p login
+    
+    .col-md-6.offset-md-3
+    .col-md-6.offset-md-3
+    
+      form.omb_loginForm(action='', autocomplete='off', method='POST')
+          
+        .input-group
+          span.input-group-addon
+            //i.fa.fa-user
+            
+          input.form-control(type='text', name='email', placeholder='email address')
+
+          
+        span.help-block
+        .input-group
+          span.input-group-addon
+            //i.fa.fa-lock
+            
+          input.form-control(type='password', name='password', placeholder='Password')
+          br
+          
+        button.btn.btn-lg.btn-primary.btn-block(type='submit') Login
+        br
+  
+    a.btn.btn-primary(href='/auth/facebook', style='width:12em')  Sign in with Facebook
+      i.fa.fa-facebook(style='width:16px; height:20px')
+    
+  
+
+
