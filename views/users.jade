@@ -2,7 +2,7 @@ extends layout
 
 block content
 
-  div.SignUp
+  div.login
     h1 Welcome to HomeRestaurant
     p Sign Up
     
@@ -10,17 +10,18 @@ block content
     .col-md-6.offset-md-3
     
       form.omb_signUpForm(action='', autocomplete='off', method='POST')
-          
+         input.form-control(type='text', name='name', placeholder='name')
         .input-group
-          span.input-group-addon
+          //span.input-group-addon
             //i.fa.fa-user
             
+          
           input.form-control(type='text', name='email', placeholder='email address')
 
           
         span.help-block
         .input-group
-          span.input-group-addon
+          //span.input-group-addon
             //i.fa.fa-lock
             
           input.form-control(type='password', name='password', placeholder='Password')
