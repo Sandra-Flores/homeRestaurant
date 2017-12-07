@@ -1,0 +1,38 @@
+extends layout
+
+block content
+
+  div.SignUp
+    h1 Welcome to HomeRestaurant
+    p Sign Up
+    
+    .col-md-6.offset-md-3
+    .col-md-6.offset-md-3
+    
+      form.omb_signUpForm(action='', autocomplete='off', method='POST')
+          
+        .input-group
+          span.input-group-addon
+            //i.fa.fa-user
+            
+          input.form-control(type='text', name='email', placeholder='email address')
+
+          
+        span.help-block
+        .input-group
+          span.input-group-addon
+            //i.fa.fa-lock
+            
+          input.form-control(type='password', name='password', placeholder='Password')
+          input.form-control(type='password', name='password', placeholder='Confirm Password')
+          br
+          
+        button.btn.btn-lg.btn-primary.btn-block(type='submit') Login
+        br
+  
+    a.btn.btn-primary(href='/auth/facebook', style='width:12em')  Sign in with Facebook
+      i.fa.fa-facebook(style='width:16px; height:20px')
+    
+  
+
+
