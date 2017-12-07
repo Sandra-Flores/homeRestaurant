@@ -29,7 +29,6 @@ router.get('/storelocator', function(req, res, next){
                 marker.att('description', results[i].description);
                 marker.att('phone_number', results[i].phone_number)
            }
-           console.log(markers.end({pretty: true}));
            res.send(markers.end({pretty: true}))
        }
     });

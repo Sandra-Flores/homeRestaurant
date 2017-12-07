@@ -14,6 +14,7 @@ var users = require('./routes/users');
 var login = require('./routes/login');
 var auth = require('./routes/auth');
 var xml = require('./routes/xml');
+var restaurant = require('./routes/restaurant')
 
 var app = express();
 
@@ -44,6 +45,7 @@ app.use('/users', users);
 app.use('/login', login);
 app.use('/auth', auth);
 app.use('/xml', xml);
+app.use('/restaurant', restaurant);
 
 db.connect(db.MODE_TEST, function(err){
   if(err){

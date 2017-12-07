@@ -15,18 +15,13 @@ html
       nav.navbar.navbar-toggleable-md.navbar-light.bg-faded.fixed-top
         button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
           span.navbar-toggler-icon
-        a.navbar-brand(href='#') Home Restaurant
+        a.navbar-brand(href='/') Home Restaurant
         #navbarSupportedContent.collapse.navbar-collapse
           ul.navbar-nav.mr-auto
             li.nav-item
-              a.nav-link(href='#') Home
+              a.nav-link(href='/') Home
             li.nav-item
-              a.nav-link(href='#') Favorites
-            li.nav-item
-              a.nav-link(href='#') My Restaurant
-          ul.navbar-nav.navbar-right
-            li.nav-item
-                a.nav-link(href='#') My Account
+              a.nav-link(href='/restaurant/manage') My Restaurant
           form.form-inline(action='/logout')
             button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Log Out
               
