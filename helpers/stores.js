@@ -51,7 +51,7 @@ exports.get = function(store_id, done) {
 }
 
 exports.hasStore = function(user_id, done){
-    var sql = 'SELECT EXISTS(SELECT store_id FROM store WHERE user_id = ?'
+    var sql = 'SELECT EXISTS(SELECT store_id FROM store WHERE user_id = ?) AS bool'
     db.get().query(sql, user_id, function(err, result){
         if(err){
             done(err, null);

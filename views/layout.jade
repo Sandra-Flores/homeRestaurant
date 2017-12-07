@@ -22,8 +22,13 @@ html
               a.nav-link(href='/') Home
             li.nav-item
               a.nav-link(href='/restaurant/manage') My Restaurant
-          form.form-inline(action='/logout')
-            button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Log Out
+          if(user)
+            form.form-inline(action='/logout')
+              button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Log Out 
+          else
+            form.form-inline(action='/login')
+              button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Log In
+          
               
     #content.container
       block content

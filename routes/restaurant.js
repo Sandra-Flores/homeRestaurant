@@ -23,7 +23,7 @@ router.get('/create', ensureAuthenticated, function(req, res, next){
 });
 
 router.post('/create', ensureAuthenticated, function(req, res, next) {
-    var user_id = req.body;
+    var user_id = req.user.id;
     var name = req.body.name;
     var address = req.body.address;
     var lat = req.body.lat;
@@ -40,7 +40,18 @@ router.post('/create', ensureAuthenticated, function(req, res, next) {
 });
 
 router.get('/manage',ensureAuthenticated, function(req, res, next) {
-     res.render('my-restaurant');
+    stores.hasStore(req.user.user_id, function(err, result){
+        console.log(result, err);
+        if(err){
+            
+            res.redirect('/');
+        } else {
+            if(!result[0].bool){
+                res.redirect('/restaurant/create');
+            }
+            res.render('my-restaurant');
+        }
+    });
 });
 
 
