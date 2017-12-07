@@ -26,6 +26,8 @@ router.get('/storelocator', function(req, res, next){
                 marker.att('lat', results[i].lat);
                 marker.att('lng', results[i].lng);
                 marker.att('distance', results[i].distance);
+                marker.att('description', results[i].description);
+                marker.att('phone_number', results[i].phone_number)
            }
            console.log(markers.end({pretty: true}));
            res.send(markers.end({pretty: true}))
