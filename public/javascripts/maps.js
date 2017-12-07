@@ -4,7 +4,8 @@ var markers = [];
 var infoWindow;
 var locationSelect;
 var side_bar_html = "";
-var divincrement = 1
+var divincrement = 1;
+
 function initMap() {
     var monterey = {lat: 36.652665, lng:  -121.797689};
     map = new google.maps.Map(document.getElementById('map'), {
@@ -100,6 +101,7 @@ function searchLocationsNear(center) {
        center: {lat: center.lat(), lng: center.lng()},
        radius: parseFloat(radius)*1000
    });
+   
    for (var i = 0; i < markerNodes.length; i++) {
      var id = markerNodes[i].getAttribute("store_id");
      var name = markerNodes[i].getAttribute("name");
@@ -108,14 +110,20 @@ function searchLocationsNear(center) {
      var latlng = new google.maps.LatLng(
           parseFloat(markerNodes[i].getAttribute("lat")),
           parseFloat(markerNodes[i].getAttribute("lng")));
+     var description = parseFloat(markerNodes[i].getAttribute("description"));
 
      createOption(name, distance, i);
-     createMarker(latlng, name, address);
+     createMarker(latlng, name, address, description);
      bounds.extend(latlng);
      
    }
+   if (markerNodes.length <= 1){
+       document.getElementById("side_bar").innerHTML = "<p class=h3 id=noloc>No Locations Found<\/p>";
+   }
+   else{
+       document.getElementById("side_bar").innerHTML = side_bar_html;
+   }
    
-   document.getElementById("side_bar").innerHTML = side_bar_html;
    map.fitBounds(mapZoom.getBounds());
    locationSelect.style.visibility = "visible";
    locationSelect.onchange = function() {
@@ -128,7 +136,7 @@ function myclick(i) {
   google.maps.event.trigger(gmarkers[i], "click");
 }
 
-function createMarker(latlng, name, address) {
+function createMarker(latlng, name, address, description) {
   var html = "<b>" + name + "</b> <br/>" + address;
   var marker = new google.maps.Marker({
     map: map,
@@ -140,15 +148,16 @@ function createMarker(latlng, name, address) {
   });
   markers.push(marker);
   
-   addRow(name, address); 
+   addRow(name, address, description); 
 }
-function addRow(name, address){
+function addRow(name, address, description){
     side_bar_html += '<div class="card"><div class="card-header" role="tab" id="heading'+ divincrement + '">' + 
     '<h5 class="mb-0"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse'+ divincrement + 
     '" aria-expanded="false" aria-controls="collapse'+ divincrement + '">' + 
-        name + '<\/a><\/h5><\/div><div id="collapse' + divincrement + '" class="collapse" role="tabpanel"'+
-        'aria-labelledby="heading'+ divincrement + '"><div class="card-block"> '+ address + '<\/div><\/div><\/div>'
+    name + '<\/a><\/h5><\/div><div id="collapse' + divincrement + '" class="collapse" role="tabpanel"'+
+    'aria-labelledby="heading'+ divincrement + '"><div class="card-block"> '+ description + '<\/div><\/div><\/div>';
     divincrement += 1;
+    
 }
 function createOption(name, distance, num) {
   var option = document.createElement("option");
