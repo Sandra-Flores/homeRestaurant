@@ -14,7 +14,7 @@ exports.getNear = function(lat, lng, radius, done){
     var sql = 'SELECT store_id, name, address, lat, lng, ( 3959 * acos( cos( radians(?) ) * cos( radians( lat ) )* \
         cos( radians( lng ) - radians(?) ) + sin( radians(?) ) * sin( radians( lat ) ) ) ) AS distance FROM store \
         HAVING distance < ? ORDER BY distance LIMIT 0 , 20';
-    var values = [lat, lng, lat, radius];
+    var values = [lat, lng, lat, radius*1.61];
     db.get().query(sql, values, function(err, results){
         if(err){
             done(err, null);
