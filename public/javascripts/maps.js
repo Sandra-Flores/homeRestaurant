@@ -155,7 +155,7 @@ function addRow(name, address, description){
     '<h5 class="mb-0"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse'+ divincrement + 
     '" aria-expanded="false" aria-controls="collapse'+ divincrement + '">' + 
     name + '<\/a><\/h5><\/div><div id="collapse' + divincrement + '" class="collapse" role="tabpanel"'+
-    'aria-labelledby="heading'+ divincrement + '"><div class="card-block"> '+ description + '<\/div><\/div><\/div>';
+    'aria-labelledby="heading'+ divincrement + '"><div class="card-block"> '+ "<b>Description:</b> " +description + "<\/br><b>Address: </b>" + address + '<\/div><\/div><\/div>';
     divincrement += 1;
     
 }

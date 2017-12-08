@@ -16,11 +16,11 @@ router.post('/', function(req, res, next){
     
     if(password == confirmPassword){
         
-        users.create(name, email, password, function(err, store_id){
+        users.create(email, password, name, function(err, store_id){
         if(err){
             next(new Error("Error creating user"));
         } else {
-            req.redirect('/login')
+            res.redirect('/login')
         }
     });
     }
