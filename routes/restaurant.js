@@ -10,7 +10,8 @@ function ensureAuthenticated(req, res, next){
 }
 
 
-router.post('/', function(req, res, next) {
+router.post('/:id', function(req, res, next) {
+    stores.
     res.render('restaurant');
 });
 
@@ -23,7 +24,7 @@ router.get('/create', ensureAuthenticated, function(req, res, next){
 });
 
 router.post('/create', ensureAuthenticated, function(req, res, next) {
-    var user_id = req.user.id;
+    var user_id = req.user.user_id;
     var name = req.body.name;
     var address = req.body.address;
     var lat = req.body.lat;

@@ -14,7 +14,8 @@ var signup = require('./routes/signup');
 var login = require('./routes/login');
 var auth = require('./routes/auth');
 var xml = require('./routes/xml');
-var restaurant = require('./routes/restaurant')
+var restaurant = require('./routes/restaurant');
+var logout = require('./routes/logout');
 
 var app = express();
 
@@ -52,6 +53,7 @@ app.use('/login', login);
 app.use('/auth', auth);
 app.use('/xml', xml);
 app.use('/restaurant', restaurant);
+app.use('/logout', logout);
 
 db.connect(db.MODE_TEST, function(err){
   if(err){

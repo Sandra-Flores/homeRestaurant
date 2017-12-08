@@ -23,6 +23,7 @@ html
             li.nav-item
               a.nav-link(href='/restaurant/manage') My Restaurant
           if(user)
+            span.navbar-text.my-2.my-sm-0= user.name
             form.form-inline(action='/logout')
               button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Log Out 
           else

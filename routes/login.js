@@ -4,9 +4,11 @@ var localPassport = require('../helpers/passport.js');
 /* GET login page. */
 
 function ensureNotAuthenticated(req, res, next){
+    console.log(req.user);
     if(req.user){
        res.redirect('/'); 
     }
+    next();
 }
 
 router.get('/', ensureNotAuthenticated, function(req, res, next){ 
