@@ -3,18 +3,17 @@ var router = express.Router();
 var localPassport = require('../helpers/passport.js');
 /* GET login page. */
 
-router.get('/', function(req, res, next) {
-    if(req.isAuthenticated()){
-        console.log(req.user);
-        console.log(req.user.user_id);
-        res.send("You're already logged in.")
-    } else {
-        res.render('login');   
+function ensureNotAuthenticated(req, res, next){
+    if(req.user){
+       res.redirect('/'); 
     }
+}
+
+router.get('/', ensureNotAuthenticated, function(req, res, next){ 
+    res.render('login');   
 });
 
-router.post('/', localPassport.authenticate('local',{failureRedirect:'/login'}), function(req, res, next){
-    
+router.post('/', ensureNotAuthenticated, localPassport.authenticate('local',{failureRedirect:'/login'}), function(req, res, next){
     res.redirect('/');
 });
 
