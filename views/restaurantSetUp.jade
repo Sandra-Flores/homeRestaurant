@@ -9,22 +9,19 @@ block content
     .col-md-6.offset-md-3
     .col-md-6.offset-md-3
     
-      form.omb_signUpForm(action='', autocomplete='off', method='POST')
+      form.omb_signUpForm(action='', autocomplete='off', method='POST' id="restaurantForm")
         input.form-control(type='text', name='name', placeholder='restaurant name')
-        .input-group
-            input.form-control(type='text', name='address', placeholder='address')
-            br
-            input.form-control(type='text', name='city', placeholder='city')
-            br
-            input.form-control(type='text', name='zip', placeholder='zip')
-            br
-            input.form-control(type='text', name='state', placeholder='state')
+        input.form-control(type='text', name='address', placeholder='address')
+        input.form-control(type='text', name='phone_number', placeholder='phone number')
+        input.form-control(type='text', name='lat', placeholder='latitude', value="36.6529")
+        input.form-control(type='text', name='lng', placeholder='longitude', value="121.7982")
 
           
         span.help-block
         .input-group
-            input.form-control(type='text', name='description', placeholder='description')
-            br
+            textarea.form-control(rows="7", cols="50", name='description', placeholder='description' form="restaurantForm")
+        br
+        br
               
         button.btn.btn-lg.btn-primary.btn-block(type='submit') Confirm
         br

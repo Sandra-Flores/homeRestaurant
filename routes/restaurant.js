@@ -32,6 +32,7 @@ router.post('/create', ensureAuthenticated, function(req, res, next) {
     var description = req.body.description;
     stores.create(user_id, name, address, lat, lng, phone_number, description, function(err, store_id){
         if(err){
+            console.log(err);
             next(new Error("Error creating restaurant"));
         } else {
             req.redirect('/restaurant/manage')
