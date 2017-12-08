@@ -111,9 +111,9 @@ function searchLocationsNear(center) {
           parseFloat(markerNodes[i].getAttribute("lat")),
           parseFloat(markerNodes[i].getAttribute("lng")));
      var description = markerNodes[i].getAttribute("description");
-
+    var phone = parseFloat(markerNodes[i].getAttribute("phone_number"));
      createOption(name, distance, i);
-     createMarker(latlng, name, address, description);
+     createMarker(latlng, name, address, description, phone, distance);
      bounds.extend(latlng);
      
    }
@@ -136,7 +136,7 @@ function myclick(i) {
   google.maps.event.trigger(gmarkers[i], "click");
 }
 
-function createMarker(latlng, name, address, description) {
+function createMarker(latlng, name, address, description, phone, distance) {
   var html = "<b>" + name + "</b> <br/>" + address;
   var marker = new google.maps.Marker({
     map: map,
@@ -148,17 +148,21 @@ function createMarker(latlng, name, address, description) {
   });
   markers.push(marker);
   
-   addRow(name, address, description); 
+   addRow(name, address, description, phone, distance); 
 }
-function addRow(name, address, description){
+function addRow(name, address, description, phone, distance){
+    distance = distance.toFixed(1);
     side_bar_html += '<div class="card"><div class="card-header" role="tab" id="heading'+ divincrement + '">' + 
     '<h5 class="mb-0"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse'+ divincrement + 
     '" aria-expanded="false" aria-controls="collapse'+ divincrement + '">' + 
     name + '<\/a><\/h5><\/div><div id="collapse' + divincrement + '" class="collapse" role="tabpanel"'+
-    'aria-labelledby="heading'+ divincrement + '"><div class="card-block"> '+ "<b>Description:</b> " +description + "<\/br><b>Address: </b>" + address + '<\/div><\/div><\/div>';
+    'aria-labelledby="heading'+ divincrement + '"><div class="card-block"> '+ "<b>Description:</b> " +description + "<\/br><b>Address: </b>" 
+    + address + "</br><b>Phone Number: </b>" + phone + "</br><b>Distance From Location: </b>"+ distance + " miles"
+    + '<\/div><\/div><\/div>';
     divincrement += 1;
     
 }
+
 function createOption(name, distance, num) {
   var option = document.createElement("option");
   option.value = num;
