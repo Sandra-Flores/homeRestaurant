@@ -11,7 +11,6 @@ function ensureAuthenticated(req, res, next){
 
 
 router.post('/:id', function(req, res, next) {
-    stores.
     res.render('restaurant');
 });
 
