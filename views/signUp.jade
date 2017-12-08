@@ -9,24 +9,18 @@ block content
     .col-md-6.offset-md-3
     .col-md-6.offset-md-3
     
-      form.omb_signUpForm(action='', autocomplete='off', method='POST')
-         input.form-control(type='text', name='name', placeholder='name')
+      form.omb_signUpForm(action='/signup', autocomplete='off', method='POST')
+        input.form-control(type='text', name='name', placeholder='name')
         .input-group
-          //span.input-group-addon
-            //i.fa.fa-user
-            
           
-          input.form-control(type='text', name='email', placeholder='email address')
-
+        input.form-control(type='text', name='email', placeholder='email address')
           
         span.help-block
         .input-group
-          //span.input-group-addon
-            //i.fa.fa-lock
             
-          input.form-control(type='password', name='password', placeholder='Password')
-          input.form-control(type='password', name='confirmPassword', placeholder='Confirm Password')
-          br
+        input.form-control(type='password', name='password', placeholder='Password')
+        input.form-control(type='password', name='confirmPassword', placeholder='Confirm Password')
+        br
           
         button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign Up
         br
