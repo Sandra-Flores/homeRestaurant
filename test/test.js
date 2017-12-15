@@ -10,25 +10,25 @@ var express = require('express');
 
 describe("Testing home page", function() {
     it("Home page should not be null", function(done) {
-      request.get(base_url, function(error, response, body) {
-        expect(body).to.not.be.null;
+      index.get(base_url, function(error, response, body) {
+        expect(body).to.be.null;
         // done();
       });
     });
     
 describe("Testing home page", function() {
     it("Home page should not be null", function(done) {
-      request.get(base_url, function(error, response, body) {
-        expect(body).to.not.be.null;
-         done();
+      restaurant.get(base_url, function(error, response, body) {
+        expect(body).to.be.null;
+        // done();
       });
     });
     
 describe("Testing restaurant page", function() {
     it("Restaurant page should not be null", function(done) {
-      request.get(base_url, function(error, response, body) {
-        expect(body).to.not.be.null;
-        done();
+      restaurantSetUp.get(base_url, function(error, response, body) {
+        expect(body).to.be.null;
+        // done();
       });
     });
     
