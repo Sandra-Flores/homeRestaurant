@@ -1,5 +1,4 @@
 var request = require("request");
-var expect = require("chai").expect;
 var helloWorld = require("../app.js")
 var base_url = "http://localhost:3000/"
 
