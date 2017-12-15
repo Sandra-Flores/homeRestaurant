@@ -86,3 +86,7 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+exports.closeServer = function(){
+  app.close();
+};
