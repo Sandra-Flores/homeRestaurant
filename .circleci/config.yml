@@ -1,4 +1,9 @@
 version: 2
+deployment:
+    staging:
+        branch: master
+        heroku:
+            appname: home-restaurant
 
 jobs:
    build:
@@ -25,9 +30,3 @@ jobs:
      branches:
       only:
         - unit_tests
-
-deployment:
-    staging:
-        branch: master
-        heroku:
-            appname: home-restaurant
