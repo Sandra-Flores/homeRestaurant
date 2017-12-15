@@ -8,7 +8,7 @@ To run the homeRestaurant application is not too complicated.
  * You can run the application from Heroku here [https://home-restaurant.herokuapp.com/] 
  * If you have access to c9 you can click on the run button under the express configurations and then preview the running app
  
-## CircleCI
+## [CircleCI](https://circleci.com/gh/Sandra-Flores/homeRestaurant/tree/master)
 
 For CircleCI we had to connect our circleCI to automatically check every deployment and test our code. We also connected it to our Heroku application to make sure it wouldn't upload any code that would break our app.
 
