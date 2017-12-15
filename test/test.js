@@ -12,7 +12,7 @@ describe("Testing home page", function() {
     it("Home page should not be null", function(done) {
       request.get(base_url, function(error, response, body) {
         expect(body).to.not.be.null;
-        // done();
+         done();
       });
     });
     
