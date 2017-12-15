@@ -1,9 +1,4 @@
 version: 2
-deployment:
-    staging:
-        branch: master
-        heroku:
-            appname: home-restaurant
 
 jobs:
    build:
@@ -27,6 +22,12 @@ jobs:
       - run:
           name: test
           command: './node_modules/.bin/mocha'
-     branches:
+     branches: master
       only:
         - unit_tests
+
+deployment:
+    staging:
+        branch: master
+        heroku:
+            appname: home-restaurant
