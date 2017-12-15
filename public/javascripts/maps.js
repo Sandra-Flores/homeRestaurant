@@ -106,7 +106,7 @@ function searchLocationsNear(center) {
      var id = markerNodes[i].getAttribute("store_id");
      var name = markerNodes[i].getAttribute("name");
      var address = markerNodes[i].getAttribute("address");
-     var distance = parseFloat(markerNodes[i].getAttribute("distance"));
+     var distance = parseFloat(markerNodes[i].getAttribute("distance"))*0.62;
      var latlng = new google.maps.LatLng(
           parseFloat(markerNodes[i].getAttribute("lat")),
           parseFloat(markerNodes[i].getAttribute("lng")));

@@ -62,22 +62,35 @@ exports.hasStore = function(user_id, done){
 }
 
 exports.create = function(user_id, name, address, lat, lng, phone_number, description, done){
-    var menu_id;
-    createMenu(function(err, insert_id){
+    /*createMenu(function(err, insert_id){
         if(err){
             return err;
         } else {
-            menu_id = insert_id;
+            var menu_id = insert_id;
+            console.log(menu_id);
+            var sql = 'INSERT INTO store(user_id, menu_id, name, address, lat, lng, phone_number, description) VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
+            var values = [user_id, menu_id, name, address, lat, lng, phone_number, description];
+
+            db.get().query(sql, values, function(err, result){
+                if(err){
+                    done(err, null);
+            } else {
+                done(null, result.insertId);
+            }
+            });
         }
-    });
+    });*/
+    var menu_id = 1;
+    console.log(menu_id);
     var sql = 'INSERT INTO store(user_id, menu_id, name, address, lat, lng, phone_number, description) VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
     var values = [user_id, menu_id, name, address, lat, lng, phone_number, description];
-    
+
     db.get().query(sql, values, function(err, result){
         if(err){
             done(err, null);
         } else {
-            done(null, result.insertId);
+            done(null, result);
         }
     });
+  
 };

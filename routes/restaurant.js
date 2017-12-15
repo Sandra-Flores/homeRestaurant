@@ -9,11 +9,6 @@ function ensureAuthenticated(req, res, next){
     res.redirect('/login');
 }
 
-
-router.post('/:id', function(req, res, next) {
-    res.render('restaurant');
-});
-
 router.get('/', function(req, res, next) {
    res.redirect('/restaurant/manage') 
 });
@@ -31,10 +26,12 @@ router.post('/create', ensureAuthenticated, function(req, res, next) {
     var phone_number = req.body.phone_number;
     var description = req.body.description;
     stores.create(user_id, name, address, lat, lng, phone_number, description, function(err, store_id){
+        console.log(err, store_id);
         if(err){
+            console.log(err);
             next(new Error("Error creating restaurant"));
         } else {
-            req.redirect('/restaurant/manage')
+            res.redirect('/')
         }
     });
 });
