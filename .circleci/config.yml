@@ -22,9 +22,7 @@ jobs:
       - run:
           name: test
           command: './node_modules/.bin/mocha'
-     branches:
-      only:
-        - unit_tests
+     branches: master
 
 deployment:
     staging:
